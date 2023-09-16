@@ -1,3 +1,4 @@
+// Computer pulls random pick from array
 let arr = ["Rock", "Paper", "Scissors"]
 
 function getComputerChoice() {
@@ -5,3 +6,11 @@ function getComputerChoice() {
 }
 
 console.log(getComputerChoice())
+
+// User inputs their choice(userSelection) from same array, case insensitive
+
+// userSelection & compSelection are compared
+
+// If userSelection === compSelection, return "It's a tie!"
+
+// Write parameters so Rock > Scissors, Scissors > Paper, Paper > Rock
