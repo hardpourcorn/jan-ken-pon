@@ -1,16 +1,36 @@
 // Computer pulls random pick from array
-let arr = ["Rock", "Paper", "Scissors"]
+const choices = ["rock", "paper", "scissors"];
 
-function getComputerChoice() {
-    return (arr[(Math.floor(Math.random() * arr.length))]);    
+// first to 5 wins(ends game)
+// Make counter for scoreboard
+
+function game() {
+    playRound();
+
 }
 
-console.log(getComputerChoice())
+function playRound() {
+    const playerSelection = getPlayerChoice();
+    const compSelection = getComputerChoice();
+}
 
-// User inputs their choice(userSelection) from same array, case insensitive
+function getPlayerChoice() {
+    let input = prompt("Type Rock, Paper, or Scissors");
+    input = input.toLowerCase();
+    console.log(input);
+}
 
-// userSelection & compSelection are compared
 
-// If userSelection === compSelection, return "It's a tie!"
+function getComputerChoice() {
+    return (choices[(Math.floor(Math.random() * choices.length))]);    
+}
 
-// Write parameters so Rock > Scissors, Scissors > Paper, Paper > Rock
+function validateInput(choice){
+    if (choices.includes(choice)){
+        return true;
+    }
+     return false
+}
+
+game();
+
