@@ -1,36 +1,41 @@
-// Computer pulls random pick from array
+// JavaScript code for the game
 const choices = ["rock", "paper", "scissors"];
+const resultDisplay = document.getElementById("result");
 
-// first to 5 wins(ends game)
-// Make counter for scoreboard
+// Event listeners for player's choices
+document.getElementById("rock").addEventListener("click", () => playGame("rock"));
+document.getElementById("paper").addEventListener("click", () => playGame("paper"));
+document.getElementById("scissors").addEventListener("click", () => playGame("scissors"));
 
-function game() {
-    playRound();
-
+// Function to play the game
+function playGame(playerChoice) {
+    const computerChoice = getRandomChoice();
+    const result = getGameResult(playerChoice, computerChoice);
+    displayResult(result);
 }
 
-function playRound() {
-    const playerSelection = getPlayerChoice();
-    const compSelection = getComputerChoice();
+// Function to get a random computer choice
+function getRandomChoice() {
+    const randomIndex = Math.floor(Math.random() * choices.length);
+    return choices[randomIndex];
 }
 
-function getPlayerChoice() {
-    let input = prompt("Type Rock, Paper, or Scissors");
-    input = input.toLowerCase();
-    console.log(input);
-}
-
-
-function getComputerChoice() {
-    return (choices[(Math.floor(Math.random() * choices.length))]);    
-}
-
-function validateInput(choice){
-    if (choices.includes(choice)){
-        return true;
+// Function to determine the game result
+function getGameResult(playerChoice, computerChoice) {
+    if (playerChoice === computerChoice) {
+        return "It's a tie!";
+    } else if (
+        (playerChoice === "rock" && computerChoice === "scissors") ||
+        (playerChoice === "paper" && computerChoice === "rock") ||
+        (playerChoice === "scissors" && computerChoice === "paper")
+    ) {
+        return "You win!";
+    } else {
+        return "Computer wins!";
     }
-     return false
 }
 
-game();
-
+// Function to display the result
+function displayResult(result) {
+    resultDisplay.textContent = result;
+}
